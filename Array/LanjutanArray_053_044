@@ -1,0 +1,107 @@
+#include <stdio.h>
+// Ini semua merupakan prototyping dari fungsi fungsi yang akan dibuat dan digunakan
+void IsikanArray(float *A, int n);
+void TampilArray(float *A, int n);
+void TampilYangTermahal(float *A, int n);
+void TampilYangTermurah(float *A, int n);
+void Tukar(float *a_p, float *b_p);
+void UrutkanArray(float *A, int n);
+
+void main(void) // Fungsi utama
+{
+
+    float hargaSepeda[7];               // Deklarasi array yang akan menjadi obyek utama
+    IsikanArray(hargaSepeda, 7);        // memanggil fungsi IsikanArray
+    TampilArray(hargaSepeda, 7);        // memanggil fungsi TampilArray
+    TampilYangTermahal(hargaSepeda, 7); // memanggil fungsi TampilYangTermahal
+    TampilYangTermurah(hargaSepeda, 7); // memanggil fungsi TampilYangTermurah
+    // Tukar(&hargaSepeda[z], &hargaSepeda[z+1]); // memanggil fungsi Tukar
+    UrutkanArray(hargaSepeda, 7); // memanggil fungsi UrutkanArray
+}
+
+void IsikanArray(float *A, int n) // Fungsi IsikanArray
+{
+
+    float hargaSepeda[7];
+    for (n = 0; n < 7; n++)
+    {
+        printf("\nIndex ke-%d Masukkan harga sepeda baru yang telah dibeli: Rp", n);
+        scanf("%g", &hargaSepeda[n]); // Mendapatkan inputan harga dari user
+    }
+}
+
+void TampilArray(float *A, int n) // Fungsi TampilArray
+{
+
+    float hargaSepeda[7];
+    for (n = 0; n < 7; n++)
+    {
+        printf("\nHarga sepeda ke-%d adalah Rp%g \n", n, hargaSepeda[n]); // Menampilkan hasil inputan nilai harga inputan user
+    }
+}
+
+void TampilYangTermahal(float *A, int n) // Fungsi TampilYangTermahal
+{
+    TampilArray;
+    int terbesar;
+    float hargaSepeda[7];
+    terbesar = hargaSepeda[0]; // Deklarasi variabel terbesar untuk perbandingan
+    for (n = 0; n < 7; n++)    // Perulangan for loop untuk mencari perbandingan nilai harga terbesar
+    {
+        if (hargaSepeda[n] > terbesar)
+        {
+            terbesar = hargaSepeda[n]; // Menyimpan harga terbesar atau termahal
+        }
+    }
+    printf("\nMaka harga sepeda termahal adalah Rp%d", terbesar); // Menampilkan hargaa termahal ke user
+}
+
+void TampilYangTermurah(float *A, int n) // Fungsi TampilYangTermurah
+{
+    TampilArray;
+    int terkecil;
+    float hargaSepeda[7];
+    terkecil = hargaSepeda[0]; // Deklarasi variabel termurah untuk perbandingan
+    for (n = 0; n < 7; n++)    // Perulangan for loop untuk mencari perbandingan nilai harga termurah
+    {
+        if (hargaSepeda[n] < terkecil)
+        {
+            terkecil = hargaSepeda[n]; // Menyimpan harga terbesar atau termurah
+        }
+    }
+    printf("\nMaka harga sepeda termurah adalah Rp%d", terkecil); // Menampilkan hargaa termurah ke user
+}
+/*
+void Tukar(float *a_p, float *b_p) // Fungsi Tukar melakukan penukaran suatu nilai
+{
+    float wadah;
+    wadah = *a_p;
+    *a_p = *b_p;
+    *b_p = wadah;
+}
+*/
+
+void UrutkanArray(float *A, int n) // Fungsi UrutkanArray untuk mengurutkan inputan pengguna secara ascending dri yang terkecil ke terbesar
+{
+    TampilArray;
+    int i, j;
+    float hargaSepeda[7];
+    float tmp;
+    for (i = 0; i < n - 1; ++i)
+    {
+        for (j = 0; j < n - i - 1; ++j)
+        {
+            if (hargaSepeda[j] > hargaSepeda[j + 1]) // Proses penukaran guna mengurutkan
+            {
+                tmp = hargaSepeda[j];
+                hargaSepeda[j] = hargaSepeda[j + 1];
+                hargaSepeda[j + 1] = tmp;
+                //Tukar(&hargaSepeda[j], &hargaSepeda[j + 1]);
+            }
+        }
+    }
+    for (i = 0; i < n; ++i)
+    {
+        printf("\n%.2f\n", hargaSepeda[i]); // Menampilkan tampilan sorting ascending dari harga inputan pengguna
+    }
+}
